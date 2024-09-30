@@ -8,7 +8,7 @@ export const data = movieListData.results;
 function Main() {
   return (
     <DivStyle>
-      {/* {console.log(data)} */}
+      {console.log(data)}
       {data.map((el) => (
         <LiStyle key={el.id}>
           <Link to={`/details/${el.id}`}>
@@ -22,9 +22,8 @@ function Main() {
 
 const LiStyle = styled.li`
   list-style: none;
-  width: 250px;
-  height: 300px;
-  padding: 5px;
+  width: 200px;
+  padding: 10px 5px;
 `;
 const DivStyle = styled.div`
   display: flex;

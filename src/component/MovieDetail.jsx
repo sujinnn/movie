@@ -10,9 +10,9 @@ function MovieDetail() {
     <DetailStyle>
       {/* {console.log(movieDetailData)} */}
       <img
-        src={`https://image.tmdb.org/t/p/w500${movieDetailData.backdrop_path}
+        src={`https://image.tmdb.org/t/p/w500${movieDetailData.poster_path}
         `}
-        className="w-[480px] h-[500px]"
+        className="w-[400px] h-[500px]"
       ></img>
       <Detail2>
         <div className="text-[30px] font-bold  w-[180px] leading-[25px]">
