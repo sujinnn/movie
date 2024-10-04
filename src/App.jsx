@@ -4,15 +4,19 @@ import MovieDetail from "./component/MovieDetail";
 import Main from "./component/Main";
 import Signup from "./component/Signup";
 import Login from "./component/Login";
+import NavBar from "./component/NavBar";
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Main />}></Route>
-      <Route path="/details/:id" element={<MovieDetail />}></Route>
-      <Route path="/signup" element={<Signup />}></Route>
-      <Route path="/login" element={<Login />}></Route>
-    </Routes>
+    <>
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<Main />}></Route>
+        <Route path="/details/:id" element={<MovieDetail />}></Route>
+        <Route path="/signup" element={<Signup />}></Route>
+        <Route path="/login" element={<Login />}></Route>
+      </Routes>
+    </>
   );
 }
 

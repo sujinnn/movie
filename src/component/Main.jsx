@@ -2,7 +2,6 @@ import MovieCard from "./MovieCard";
 // import movieListData from "../data/movieListData.json";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import NavBar from "./NavBar";
 import { useEffect, useState } from "react";
 
 // export const data = movieListData.results;
@@ -32,18 +31,15 @@ function Main() {
   }, []);
 
   return (
-    <>
-      <NavBar />
-      <DivStyle>
-        {PopularData.map((el) => (
-          <LiStyle key={el.id}>
-            <Link to={`/details/${el.id}`}>
-              <MovieCard movie={el}></MovieCard>
-            </Link>
-          </LiStyle>
-        ))}
-      </DivStyle>
-    </>
+    <DivStyle>
+      {PopularData.map((el) => (
+        <LiStyle key={el.id}>
+          <Link to={`/details/${el.id}`}>
+            <MovieCard movie={el}></MovieCard>
+          </Link>
+        </LiStyle>
+      ))}
+    </DivStyle>
   );
 }
 
