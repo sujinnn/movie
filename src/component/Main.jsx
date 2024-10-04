@@ -11,7 +11,7 @@ function Main() {
       method: "GET",
       headers: {
         accept: "application/json",
-        Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MDVjMWFiYTg0NjAzZGY0YjA0MTQ4NDJlMDdkMTRmMiIsIm5iZiI6MTcyODAyMzQzMy43MzkyNjQsInN1YiI6IjY2ZmNmOTRmZGYyYWJhOTViM2YyMzg4ZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.inUr9RnEXe7NWFQD-NUEtYlDDDNa6RMoePHcbnpBrew`,
+        Authorization: `Bearer ${import.meta.env.BEARER}`,
       },
     };
 

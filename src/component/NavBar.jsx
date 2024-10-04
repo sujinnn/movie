@@ -5,7 +5,6 @@ import { useState } from "react";
 
 function NavBar() {
   const navigate = useNavigate();
-  const [inputValue, setInputValue] = useState("");
 
   return (
     <DivStyle>
