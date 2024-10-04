@@ -6,7 +6,7 @@ function NavBar() {
   const navigate = useNavigate();
   return (
     <DivStyle>
-      <Logo src={logo} alt="" />
+      <Logo src={logo} alt="" onClick={() => navigate(`/`)} />
       <ButtonStyle>
         <button onClick={() => navigate(`/signup`)}>회원가입</button>
         <button onClick={() => navigate(`/login`)} className="pl-[5px]">
