@@ -1,10 +1,25 @@
-import MovieCard from "./MovieCard";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
+import { Link, useSearchParams } from "react-router-dom";
+import { getRegExp } from "korean-regexp";
 import { useEffect, useState } from "react";
+import styled from "styled-components";
+import MovieCard from "./MovieCard";
+import { DivStyle, LiStyle } from "./Main";
 
-function Main() {
+function Search() {
   const [PopularData, setPopularData] = useState([]);
+
+  const [searchParams] = useSearchParams();
+  const [filteredData, setFilteredData] = useState(PopularData);
+  const param = searchParams.get("title");
+  const reg = getRegExp(param);
+
+  useEffect(() => {
+    const debounceTimer = setTimeout(() => {
+      const newFilteredData = PopularData.filter((el) => el.title.match(reg));
+      setFilteredData(newFilteredData);
+    }, 1000);
+    return () => clearTimeout(debounceTimer);
+  }, [param]);
 
   useEffect(() => {
     const options = {
@@ -29,9 +44,9 @@ function Main() {
 
   return (
     <DivStyle>
-      {PopularData.map((el) => (
+      {filteredData.map((el) => (
         <LiStyle key={el.id}>
-          <Link to={`/details/${el.id}`}>
+          <Link to={`/detail/${el.id}`}>
             <MovieCard movie={el}></MovieCard>
           </Link>
         </LiStyle>
@@ -40,16 +55,4 @@ function Main() {
   );
 }
 
-export const LiStyle = styled.li`
-  list-style: none;
-  width: 200px;
-  padding: 10px 5px;
-`;
-export const DivStyle = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding-top: 100px;
-`;
-
-export default Main;
+export default Search;

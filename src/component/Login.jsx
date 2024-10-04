@@ -12,9 +12,9 @@ function Login() {
       <div className="text-[30px] p-[40px] ">Login</div>
       <InputListStyle>
         <PStyle>Email</PStyle>
-        <InputStyle type="text" />
+        <InputStyle type="email" />
         <PStyle>Password</PStyle>
-        <InputStyle type="text" />
+        <InputStyle type="password" />
       </InputListStyle>
       <ButtonStyle>Login</ButtonStyle>
     </BigboxStyle>

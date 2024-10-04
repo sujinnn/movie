@@ -8,9 +8,7 @@ function MovieCard({ movie }) {
         className="h-[250px] "
       />
       <div className="text-[20px] font-bold ">{movie.title}</div>
-      <div className="text-right mr-[10px] text-[darkgray]">
-        평점 : {movie.vote_average}
-      </div>
+      <div className=" text-[darkgray]">평점 : {movie.vote_average}</div>
     </>
   );
 }

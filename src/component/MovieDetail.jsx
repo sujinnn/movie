@@ -12,10 +12,10 @@ function MovieDetail() {
     method: "GET",
     headers: {
       accept: "application/json",
-      Authorization: `Bearer ${import.meta.env.BEARER}`,
+      Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MDVjMWFiYTg0NjAzZGY0YjA0MTQ4NDJlMDdkMTRmMiIsIm5iZiI6MTcyODAyMzQzMy43MzkyNjQsInN1YiI6IjY2ZmNmOTRmZGYyYWJhOTViM2YyMzg4ZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.inUr9RnEXe7NWFQD-NUEtYlDDDNa6RMoePHcbnpBrew`,
     },
   };
-
+  //${import.meta.env.BEARER}
   useEffect(() => {
     fetch(
       `https://api.themoviedb.org/3/movie/${movieId}?language=ko-KR`,
@@ -32,27 +32,30 @@ function MovieDetail() {
   console.log(movieData.genres);
 
   return (
-    <DetailStyle>
-      <img
-        src={`https://image.tmdb.org/t/p/w500${movieData.poster_path}
+    <Background>
+      <DetailStyle>
+        <img
+          src={`https://image.tmdb.org/t/p/w500${movieData.poster_path}
         `}
-        className="w-[400px] h-[500px]"
-      ></img>
-      <Detail2>
-        <div className="text-[30px] font-bold  w-[180px] leading-[25px]">
-          {movieData.title}
-        </div>
-        <div className="text-[darkgray] w-[180px] ">
-          평점 {movieData.vote_average}
-        </div>
-        <div>
-          {movieData.genres
-            ? movieData.genres.map((el) => el.name).join("  ")
-            : "장르 정보 없음"}
-        </div>
-        <div className="pt-[50px]">{movieData.overview}</div>
-      </Detail2>
-    </DetailStyle>
+          className="w-[400px] h-[500px]"
+        ></img>
+        <Detail2>
+          <div className="text-[30px] font-bold  w-[400px] leading-[25px]">
+            {movieData.title}
+          </div>
+          <div className=" text-[darkgray] w-[400px] ">
+            평점 {movieData.vote_average}
+          </div>
+
+          <div className="w-[400px] pt-[20px]">
+            {movieData.genres
+              ? movieData.genres.map((el) => el.name).join(" | ")
+              : "장르 정보 없음"}
+          </div>
+          <div className="pt-[20px] w-[400px]">{movieData.overview}</div>
+        </Detail2>
+      </DetailStyle>
+    </Background>
   );
 }
 
@@ -62,12 +65,16 @@ const DetailStyle = styled.div`
   height: 100vh;
   align-items: center;
   justify-content: center;
+  padding-top: 50px;
 `;
 const Detail2 = styled.div`
   display: flex;
   flex-wrap: wrap;
-  padding-left: 10px;
+  margin-left: 80px;
   width: 400px;
+`;
+export const Background = styled.div`
+  background-color: lightgray;
 `;
 
 export default MovieDetail;

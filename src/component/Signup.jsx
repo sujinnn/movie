@@ -2,20 +2,22 @@ import styled from "styled-components";
 
 function Signup() {
   return (
-    <BigboxStyle>
-      <div className="text-[30px] p-[40px] ">Sign UP</div>
-      <InputListStyle>
-        <PStyle>name</PStyle>
-        <InputStyle type="text" />
-        <PStyle>Email</PStyle>
-        <InputStyle type="text" />
-        <PStyle>password</PStyle>
-        <InputStyle type="text" />
-        <PStyle>Confirm Password</PStyle>
-        <InputStyle type="text" />
-      </InputListStyle>
-      <ButtonStyle>Sign Up</ButtonStyle>
-    </BigboxStyle>
+    <div className="w-screen">
+      <BigboxStyle>
+        <div className="text-[30px] p-[40px] ">Sign UP</div>
+        <InputListStyle>
+          <PStyle>name</PStyle>
+          <InputStyle type="text" />
+          <PStyle>Email</PStyle>
+          <InputStyle type="email" />
+          <PStyle>password</PStyle>
+          <InputStyle type="password" />
+          <PStyle>Confirm Password</PStyle>
+          <InputStyle type="password" />
+        </InputListStyle>
+        <ButtonStyle>Sign Up</ButtonStyle>
+      </BigboxStyle>
+    </div>
   );
 }
 
@@ -29,6 +31,7 @@ export const BigboxStyle = styled.div`
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background-color: lightgray;
 `;
 export const InputStyle = styled.input`
   width: 300px;
