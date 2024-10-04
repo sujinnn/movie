@@ -18,7 +18,10 @@ function MovieDetail() {
   };
 
   useEffect(() => {
-    fetch(`https://api.themoviedb.org/3/movie/${movieId}?language=ko`, options)
+    fetch(
+      `https://api.themoviedb.org/3/movie/${movieId}?language=ko-KR`,
+      options
+    )
       .then((response) => response.json())
       .then((response) => {
         console.log(response);

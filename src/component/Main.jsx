@@ -21,7 +21,7 @@ function Main() {
     };
 
     fetch(
-      "https://api.themoviedb.org/3/movie/popular?language=ko&page=1",
+      "https://api.themoviedb.org/3/movie/popular?language=ko-KR&page=1",
       options
     )
       .then((response) => response.json())
