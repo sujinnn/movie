@@ -12,8 +12,7 @@ function MovieDetail() {
     method: "GET",
     headers: {
       accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MDVjMWFiYTg0NjAzZGY0YjA0MTQ4NDJlMDdkMTRmMiIsIm5iZiI6MTcyNzk3NjI5Ni42MDcwMzYsInN1YiI6IjY2ZmNmOTRmZGYyYWJhOTViM2YyMzg4ZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.1PEogprpwkWjGzwET2SBf4pqY62VvqUvqEgD709nGk4",
+      Authorization: `Bearer ${import.meta.env.BEARER}`,
     },
   };
 
