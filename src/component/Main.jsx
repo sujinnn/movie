@@ -1,22 +1,50 @@
 import MovieCard from "./MovieCard";
-import movieListData from "../data/movieListData.json";
+// import movieListData from "../data/movieListData.json";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import NavBar from "./NavBar";
+import { useEffect, useState } from "react";
 
-export const data = movieListData.results;
+// export const data = movieListData.results;
 
 function Main() {
+  const [PopularData, setPopularData] = useState([]);
+
+  useEffect(() => {
+    const options = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MDVjMWFiYTg0NjAzZGY0YjA0MTQ4NDJlMDdkMTRmMiIsIm5iZiI6MTcyNzk3NjI5Ni42MDcwMzYsInN1YiI6IjY2ZmNmOTRmZGYyYWJhOTViM2YyMzg4ZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.1PEogprpwkWjGzwET2SBf4pqY62VvqUvqEgD709nGk4",
+      },
+    };
+
+    fetch(
+      "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
+      options
+    )
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response);
+        setPopularData(response.results);
+      })
+      .catch((err) => console.error(err));
+  }, []);
+
   return (
-    <DivStyle>
-      {console.log(data)}
-      {data.map((el) => (
-        <LiStyle key={el.id}>
-          <Link to={`/details/${el.id}`}>
-            <MovieCard movie={el}></MovieCard>
-          </Link>
-        </LiStyle>
-      ))}
-    </DivStyle>
+    <>
+      <NavBar />
+      <DivStyle>
+        {PopularData.map((el) => (
+          <LiStyle key={el.id}>
+            <Link to={`/details/${el.id}`}>
+              <MovieCard movie={el}></MovieCard>
+            </Link>
+          </LiStyle>
+        ))}
+      </DivStyle>
+    </>
   );
 }
 
@@ -29,6 +57,7 @@ const DivStyle = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  padding-top: 83px;
 `;
 
 export default Main;
