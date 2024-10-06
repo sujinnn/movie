@@ -1,9 +1,10 @@
 import { Link, useSearchParams } from "react-router-dom";
 import { getRegExp } from "korean-regexp";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 import MovieCard from "./MovieCard";
 import { DivStyle, LiStyle } from "./Main";
+import useDebounce from "../useDebounce";
 
 function Search() {
   const [PopularData, setPopularData] = useState([]);
@@ -13,13 +14,14 @@ function Search() {
   const param = searchParams.get("title");
   const reg = getRegExp(param);
 
+  const debouncedValue = useDebounce(param, 1000);
+  const search = useCallback(async () => {
+    const newFilteredData = PopularData.filter((el) => el.title.match(reg));
+    setFilteredData(newFilteredData);
+  }, [debouncedValue]);
   useEffect(() => {
-    const debounceTimer = setTimeout(() => {
-      const newFilteredData = PopularData.filter((el) => el.title.match(reg));
-      setFilteredData(newFilteredData);
-    }, 1000);
-    return () => clearTimeout(debounceTimer);
-  }, [param]);
+    search();
+  }, [debouncedValue, search]);
 
   useEffect(() => {
     const options = {

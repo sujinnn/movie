@@ -2,9 +2,11 @@ import styled from "styled-components";
 import logo from "../data/logo.png";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import useDebounce from "../useDebounce";
 
 function NavBar() {
   const navigate = useNavigate();
+  // const searchDebounce = useDebounce({ value: text, delay: 1000 });
 
   return (
     <DivStyle>
@@ -16,7 +18,9 @@ function NavBar() {
         }}
       />
       <InputStyle
-        onChange={(e) => navigate(`/search?title=${e.target.value}`)}
+        onChange={(e) => {
+          navigate(`/search?title=${e.target.value}`);
+        }}
         placeholder="  영화 제목을 입력하여 검색하세요."
       />
       <ButtonStyle>
